@@ -11,7 +11,7 @@ Edit the code with any text editor and add the file extensions you have, by defa
 videoExtensions = ['.mkv', '.mp4']
 subtitleExtensions = ['.srt']
 ```
-
+Run the script (double click the file)
 
 ## Contributing
 Pull requests are welcome.
