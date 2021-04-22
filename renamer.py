@@ -11,6 +11,7 @@ subtitleExtensions = ['.srt']
 videos = []
 subs = []
 allFiles = os.listdir()
+allFiles.sort()
 for file in allFiles:
     if file[-4:] in videoExtensions:
         videos.append(file)
@@ -22,4 +23,5 @@ print('found', len(videos), 'videos, and', len(subs), 'subs')
 for epNum, sub in enumerate(subs):
     oldName = sub
     newName = videos[epNum][:-4] + ".srt"
-    os.rename(oldName, newName)
+    print('renaming', oldName, 'to', newName)
+    #os.rename(oldName, newName)
