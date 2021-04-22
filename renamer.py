@@ -23,5 +23,9 @@ print('found', len(videos), 'videos, and', len(subs), 'subs')
 for epNum, sub in enumerate(subs):
     oldName = sub
     newName = videos[epNum][:-4] + ".srt"
-    print('renaming', oldName, 'to', newName)
-    #os.rename(oldName, newName)
+    try:
+        os.rename(oldName, newName)
+    except IndexError:
+        print("mismatched number of videos/subs")
+        break
+print("--> OPERATION COMPLETE")
