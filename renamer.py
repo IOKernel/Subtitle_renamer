@@ -5,7 +5,7 @@ import os
 script_dir = os.path.abspath(__file__)[:-10]
 os.chdir(script_dir)
 videoExtensions = ['.mkv', '.mp4']
-subtitleExtensions = ['.srt']
+subtitleExtensions = ['.srt', '.ass']
 
 # create the lists
 videos = []
@@ -22,7 +22,7 @@ print('found', len(videos), 'videos, and', len(subs), 'subs')
 # rename files
 for epNum, sub in enumerate(subs):
     oldName = sub
-    newName = videos[epNum][:-4] + ".srt"
+    newName = videos[epNum][:-4] + sub[-4:]
     try:
         os.rename(oldName, newName)
     except IndexError:
