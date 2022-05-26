@@ -2,6 +2,7 @@
 # coding: utf-8
 import os
 import re
+import sys
 
 seriesPath = "/run/user/1000/gvfs/smb-share:server=undead,share=media/Asian Shows/The Return of Superman/Season 1/"
 script_dir = os.path.abspath(__file__)[:-10]
@@ -112,4 +113,14 @@ if confirm == "y":
             print(f"Warning: No episode number found for {sub}")   
 else:
     print("Exiting...")
+    exit()
+
+# print completion message and ask user if they want to delete the python script
+print("Done!")
+confirm = input("Delete script? (y/n) ")
+if confirm == "y":
+    os.remove(__file__)
+    print("Script deleted")
+else:
+    print("Script kept")
     exit()
