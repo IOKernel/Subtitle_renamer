@@ -3,7 +3,7 @@
 import os
 import re
 
-seriesPath = "/run/user/1000/gvfs/smb-share:server=undead,share=media/Asian Shows/The Return of Superman/Season 1/"
+# get script directory and change os path to it
 script_dir = os.path.abspath(__file__)[:-10]
 os.chdir(script_dir)
 files = os.listdir()
@@ -12,6 +12,7 @@ files = os.listdir()
 videoExtensions = [".mkv", ".mp4", ".avi", ".mov", ".wmv", ".flv", ".m4v", ".mpg", ".mpeg", ".m2v", ".3gp", ".3g2", ".f4v", ".f4p", ".f4a", ".f4b"]
 subtitleExtensions = [".srt", ".sub", ".idx", ".ssa", ".ass", ".smi", ".rt", ".txt", ".mpl", ".vtt", ".dfxp", ".ttml", ".usf", ".xml", ".sup"]
 
+# identify file type
 def get_file_type(file: str, videoExtensions: list, subtitleExtensions: list) -> str:
     if file[-4:] in videoExtensions:
         return "video"
@@ -20,6 +21,7 @@ def get_file_type(file: str, videoExtensions: list, subtitleExtensions: list) ->
     else:
         return None
 
+# split files into video and subtitle lists
 def classify_files(files: list, videoExtensions: list, subtitleExtensions: list) -> list:
     videos = []
     subs = []
@@ -45,6 +47,7 @@ def rename_file(subName: str, vidName: str, MODE = "DRY"):
     except:
         print("error")
 
+# get episode number from file name using regex
 def getEpisode(filename):
     match = re.search(
         r'''(?ix)                 # Ignore case (i), and use verbose regex (x)
