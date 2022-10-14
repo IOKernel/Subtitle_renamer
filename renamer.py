@@ -13,7 +13,7 @@ videoExtensions = [".mkv", ".mp4", ".avi", ".mov", ".wmv", ".flv", ".m4v", ".mpg
 subtitleExtensions = [".srt", ".sub", ".idx", ".ssa", ".ass", ".smi", ".rt", ".txt", ".mpl", ".vtt", ".dfxp", ".ttml", ".usf", ".xml", ".sup"]
 
 # identify file type
-def get_file_type(file: str, videoExtensions: list, subtitleExtensions: list) -> str:
+def get_file_type(file: str, videoExtensions: list, subtitleExtensions: list):
     if file[-4:] in videoExtensions:
         return "video"
     elif file[-4:] in subtitleExtensions:
@@ -22,7 +22,7 @@ def get_file_type(file: str, videoExtensions: list, subtitleExtensions: list) ->
         return None
 
 # split files into video and subtitle lists
-def classify_files(files: list, videoExtensions: list, subtitleExtensions: list) -> list:
+def classify_files(files: list, videoExtensions: list, subtitleExtensions: list) -> tuple:
     videos = []
     subs = []
     for file in files:
